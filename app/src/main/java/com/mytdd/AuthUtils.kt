@@ -9,10 +9,11 @@ fun userAuthentication(email: String, password: String): Boolean {
 
 fun userAuthenticationTDD(email: String?, password: String?): AuthEvent {
     if (email == null) throw AuthException(AuthEvent.NULL_EMAIL)
+    if (password == null) throw AuthException(AuthEvent.NULL_PASSWORD)
 
-    if (email.isEmpty() && password!!.isEmpty()) return AuthEvent.EMPTY_FORM
+    if (email.isEmpty() && password.isEmpty()) return AuthEvent.EMPTY_FORM
     if (email.isEmpty()) return AuthEvent.EMPTY_EMAIL
-    if (password!!.isEmpty()) return AuthEvent.EMPTY_PASSWORD
+    if (password.isEmpty()) return AuthEvent.EMPTY_PASSWORD
 
     val passwordNumeric = password.toIntOrNull()
 
