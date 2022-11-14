@@ -1,5 +1,7 @@
 package com.mytdd
 
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.*
 import org.junit.Assert
 import org.junit.Ignore
 import org.junit.Test
@@ -7,10 +9,12 @@ import org.junit.Test
 class AuthHamcrestTest {
     //given-when-then
 
+    //Alt + 96 -> ` (backticks)
+
     @Test
     fun loginUser_correctData_returnsSuccessEvent() {
-        val isAtuhenticated = userAuthenticationTDD("aaa@gmail.com", "1234")
-        Assert.assertEquals(AuthEvent.USER_EXIST, isAtuhenticated)
+        val result = userAuthenticationTDD("aaa@gmail.com", "1234")
+        assertThat(AuthEvent.USER_EXIST, `is`(result))
     }
 
     @Test
