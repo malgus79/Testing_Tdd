@@ -40,4 +40,19 @@ class AuthTest {
         val isAtuhenticated = userAuthenticationTDD("aaa@gmail.com", "1234")
         assertEquals(AuthEvent.USER_EXIST, isAtuhenticated)
     }
+    @Test
+    fun login_completeForm_notExistUser_returnsFailEvent() {
+        val isAtuhenticated = userAuthenticationTDD("zzz@gmail.com", "1234")
+        assertEquals(AuthEvent.NOT_USER_EXIST, isAtuhenticated)
+    }
+    @Test
+    fun login_emptyEmail_returnsFailEvent() {
+        val isAtuhenticated = userAuthenticationTDD("", "1234")
+        assertEquals(AuthEvent.EMPTY_EMAIL, isAtuhenticated)
+    }
+    @Test
+    fun login_emptyPassword_returnsFailEvent() {
+        val isAtuhenticated = userAuthenticationTDD("aaa@gmail.com", "")
+        assertEquals(AuthEvent.EMPTY_PASSWORD, isAtuhenticated)
+    }
 }

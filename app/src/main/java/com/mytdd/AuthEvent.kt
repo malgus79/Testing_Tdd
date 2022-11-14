@@ -5,5 +5,7 @@ enum class AuthEvent {
     USER_EXIST,
     //fail
     NOT_USER_EXIST,
+    EMPTY_EMAIL,
+    EMPTY_PASSWORD,
 
 }
