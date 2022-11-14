@@ -1,6 +1,7 @@
 package com.mytdd
 
 import org.junit.Assert.*
+import org.junit.Ignore
 import org.junit.Test
 
 class AuthTest {
@@ -67,12 +68,12 @@ class AuthTest {
     }
     @Test
     fun login_completeForm_invalidPassword_returnsFailEvent() {
-        val isAtuhenticated = userAuthenticationTDD("aaa@gmail.com", "1234x")
+        val isAtuhenticated = userAuthenticationTDD("aaa@gmail.com", "123x")
         assertEquals(AuthEvent.INVALID_PASSWORD, isAtuhenticated)
     }
     @Test
     fun login_completeForm_invalidUser_returnsFailEvent() {
-        val isAtuhenticated = userAuthenticationTDD("aaa@gmailcom", "1234x")
+        val isAtuhenticated = userAuthenticationTDD("aaa@gmailcom", "123x")
         assertEquals(AuthEvent.INVALID_USER, isAtuhenticated)
     }
     /*@Test(expected = NullPointerException::class)
@@ -102,6 +103,7 @@ class AuthTest {
             }
         }
     }
+    @Ignore("Falta definir un requisito del cliente...")  //is a temporary tag
     @Test
     fun login_completeForm_errorLengthPassword_returnsFailEvent() {
         val isAtuhenticated = userAuthenticationTDD("aaa@gmailcom", "12")
