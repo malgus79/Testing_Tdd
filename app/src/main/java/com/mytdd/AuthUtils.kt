@@ -12,6 +12,10 @@ fun userAuthenticationTDD(email: String?, password: String?): AuthEvent {
     if (email!!.isEmpty()) return AuthEvent.EMPTY_EMAIL
     if (password!!.isEmpty()) return AuthEvent.EMPTY_PASSWORD
 
+    val passwordNumeric = password.toIntOrNull()
+    if (email.isNotEmpty() && !isEmailValid(email)) return AuthEvent.INVALID_EMAIL
+    if (password.isNotEmpty() && passwordNumeric == null) return AuthEvent.INVALID_PASSWORD
+
     if (email == "aaa@gmail.com" && password == "1234"){
         return AuthEvent.USER_EXIST
     }
