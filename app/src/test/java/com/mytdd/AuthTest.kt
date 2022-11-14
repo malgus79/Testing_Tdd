@@ -36,7 +36,7 @@ class AuthTest {
     // given - when - then
 
     @Test
-    fun loginUser_correctData_returnsSuccessEvent(){
+    fun login_completeFrom_existUser_returnsSuccessEvent(){
         val isAtuhenticated = userAuthenticationTDD("aaa@gmail.com", "1234")
         assertEquals(AuthEvent.USER_EXIST, isAtuhenticated)
     }
