@@ -7,5 +7,6 @@ enum class AuthEvent {
     NOT_USER_EXIST,
     EMPTY_EMAIL,
     EMPTY_PASSWORD,
+    EMPTY_FORM,
 
 }
