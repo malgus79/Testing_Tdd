@@ -70,4 +70,9 @@ class AuthTest {
         val isAtuhenticated = userAuthenticationTDD("aaa@gmail.com", "1234x")
         assertEquals(AuthEvent.INVALID_PASSWORD, isAtuhenticated)
     }
+    @Test
+    fun login_completeForm_invalidUser_returnsFailEvent() {
+        val isAtuhenticated = userAuthenticationTDD("aaa@gmailcom", "1234x")
+        assertEquals(AuthEvent.INVALID_USER, isAtuhenticated)
+    }
 }
