@@ -102,4 +102,9 @@ class AuthTest {
             }
         }
     }
+    @Test
+    fun login_completeForm_errorLengthPassword_returnsFailEvent() {
+        val isAtuhenticated = userAuthenticationTDD("aaa@gmailcom", "12")
+        assertEquals(AuthEvent.LENGTH_PASSWORD, isAtuhenticated)
+    }
 }

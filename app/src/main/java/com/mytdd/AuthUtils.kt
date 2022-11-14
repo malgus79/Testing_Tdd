@@ -16,14 +16,17 @@ fun userAuthenticationTDD(email: String?, password: String?): AuthEvent {
     if (email.isEmpty()) return AuthEvent.EMPTY_EMAIL
     if (password.isEmpty()) return AuthEvent.EMPTY_PASSWORD
 
-    val passwordNumeric = password.toIntOrNull()
-
-    return if (!isEmailValid(email) && (passwordNumeric == null)) AuthEvent.INVALID_USER
-    else if (!isEmailValid(email)) AuthEvent.INVALID_EMAIL
-    else if (passwordNumeric == null) AuthEvent.INVALID_PASSWORD
+    if (password.length != 4) return AuthEvent.LENGTH_PASSWORD
     else {
-        return if (email == "aaa@gmail.com" && password == "1234") AuthEvent.USER_EXIST
-        else AuthEvent.NOT_USER_EXIST
+        val passwordNumeric = password.toIntOrNull()
+
+        return if (!isEmailValid(email) && (passwordNumeric == null)) AuthEvent.INVALID_USER
+        else if (!isEmailValid(email)) AuthEvent.INVALID_EMAIL
+        else if (passwordNumeric == null) AuthEvent.INVALID_PASSWORD
+        else {
+            return if (email == "aaa@gmail.com" && password == "1234") AuthEvent.USER_EXIST
+            else AuthEvent.NOT_USER_EXIST
+        }
     }
 }
 
