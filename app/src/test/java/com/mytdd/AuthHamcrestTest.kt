@@ -90,4 +90,21 @@ class AuthHamcrestTest {
         val result = userAuthenticationTDD("aaa@gmailcom", "12")
         assertThat(AuthEvent.LENGTH_PASSWORD, `is`(result))
     }
+
+    @Test
+    fun checkNames_differentUsers_match(){
+        assertThat("Maria",containsString("a"))
+    }
+
+    @Test
+    fun checkNames_differentUsers_match2(){
+        assertThat("Maria", both(containsString("a")).and(containsString("i")))
+    }
+
+    @Test
+    fun checkData_emailPassword_noMatch(){
+        val email = "aaa@gmail.com"
+        val password = "1234"
+        assertThat(email, not(`is`(password)))
+    }
 }
