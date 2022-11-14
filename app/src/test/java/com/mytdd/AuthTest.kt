@@ -75,11 +75,11 @@ class AuthTest {
         val isAtuhenticated = userAuthenticationTDD("aaa@gmailcom", "1234x")
         assertEquals(AuthEvent.INVALID_USER, isAtuhenticated)
     }
-    @Test(expected = NullPointerException::class)
+    /*@Test(expected = NullPointerException::class)
     fun login_nullEmail_returnsException() {
         val isAtuhenticated = userAuthenticationTDD(null, "1234")
         assertEquals(AuthEvent.NULL_EMAIL, isAtuhenticated)
-    }
+    }*/
     @Test(expected = AuthException::class)
     fun login_nullEmail_returnsException2() {
         val isAtuhenticated = userAuthenticationTDD(null, "1234")
@@ -89,6 +89,17 @@ class AuthTest {
     fun login_nullPassword_returnsException() {
         assertThrows(AuthException::class.java) {
             print(userAuthenticationTDD("aaa@gmail.com", null))  //code causing the exception
+        }
+    }
+    @Test
+    fun login_nullForm_returnsException() {
+        try {
+            val result = userAuthenticationTDD(null, null)
+            assertEquals(AuthEvent.NULL_FORM, result)
+        } catch (e: Exception) {
+            (e as? AuthException)?.let {
+                assertEquals(AuthEvent.NULL_FORM, it.authEvent)
+            }
         }
     }
 }
