@@ -1,7 +1,6 @@
 package com.mytdd
 
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Test
 
 class AuthTest {
@@ -23,7 +22,7 @@ class AuthTest {
 
     /**----------------------------------- TDD -----------------------------------**/
 
-    @Test
+    /*@Test
     fun login_nullEmail_returnsFalse(){
         val isAtuhenticated = userAuthenticationTDD(null, "1234")
         assertFalse(isAtuhenticated)
@@ -32,8 +31,13 @@ class AuthTest {
     fun login_nullPassword_returnsFalse(){
         val isAtuhenticated = userAuthenticationTDD("aaa@gmail.com", null)
         assertFalse(isAtuhenticated)
-    }
+    }*/
 
     // given - when - then
 
+    @Test
+    fun loginUser_correctData_returnsSuccessEvent(){
+        val isAtuhenticated = userAuthenticationTDD("aaa@gmail.com", "1234")
+        assertEquals(AuthEvent.USER_EXIST, isAtuhenticated)
+    }
 }
