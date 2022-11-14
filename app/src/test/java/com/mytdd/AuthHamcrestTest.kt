@@ -107,4 +107,23 @@ class AuthHamcrestTest {
         val password = "1234"
         assertThat(email, not(`is`(password)))
     }
+
+    @Test
+    fun checkExist_newEmail_returnsString(){
+        val oldEmail = "aaa@gmail.com"
+        val newEmail = "aaa@hotmail.com"
+        val emails = arrayOf(oldEmail, newEmail)
+        assertThat(emails, hasItemInArray(newEmail))
+    }
+
+    @Test
+    fun checkDomain_arrayEmails_returnsString(){
+        val nextEmail = "mati@hotmail.com"
+        val oldEmail = "aaa@gmail.com"
+        val newEmail = "aaa@hotmail.com"
+        val emails = arrayListOf(oldEmail, newEmail, nextEmail)
+        val newEmails = arrayListOf(newEmail, nextEmail)
+        //assertThat(emails, everyItem(endsWith("hotmail.com")))  //verificar el dominio de todos los emails, oldEmail no coincide
+        assertThat(newEmails, everyItem(endsWith("hotmail.com")))  //verificar el dominio de todos los emails, newEmails contiene 2 emails con mismo dominio
+    }
 }
