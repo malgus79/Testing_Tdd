@@ -20,4 +20,20 @@ class AuthTest {
         val isAtuhenticated = userAuthentication("", "1234")
         assertFalse(isAtuhenticated)
     }
+
+    /**----------------------------------- TDD -----------------------------------**/
+
+    @Test
+    fun login_nullEmail_returnsFalse(){
+        val isAtuhenticated = userAuthenticationTDD(null, "1234")
+        assertFalse(isAtuhenticated)
+    }
+    @Test
+    fun login_nullPassword_returnsFalse(){
+        val isAtuhenticated = userAuthenticationTDD("aaa@gmail.com", null)
+        assertFalse(isAtuhenticated)
+    }
+
+    // given - when - then
+
 }
