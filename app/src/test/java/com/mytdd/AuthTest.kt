@@ -75,4 +75,9 @@ class AuthTest {
         val isAtuhenticated = userAuthenticationTDD("aaa@gmailcom", "1234x")
         assertEquals(AuthEvent.INVALID_USER, isAtuhenticated)
     }
+    @Test(expected = NullPointerException::class)
+    fun login_nullEmail_returnsException() {
+        val isAtuhenticated = userAuthenticationTDD(null, "1234")
+        assertEquals(AuthEvent.NULL_EMAIL, isAtuhenticated)
+    }
 }
