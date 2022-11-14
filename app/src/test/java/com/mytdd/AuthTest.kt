@@ -80,4 +80,9 @@ class AuthTest {
         val isAtuhenticated = userAuthenticationTDD(null, "1234")
         assertEquals(AuthEvent.NULL_EMAIL, isAtuhenticated)
     }
+    @Test(expected = AuthException::class)
+    fun login_nullEmail_returnsException2() {
+        val isAtuhenticated = userAuthenticationTDD(null, "1234")
+        assertEquals(AuthEvent.NULL_EMAIL, isAtuhenticated)
+    }
 }
